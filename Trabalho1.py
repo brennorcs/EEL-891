@@ -13,10 +13,9 @@ Aluno: Brenno Rodrigues de Carvalho da Silva DRE:115044743
 
 #importando bibliotecas que serao utilizadas futuramente
 import pandas as pd
-#import featuretools as ft
-#import numpy as np
 import matplotlib.pyplot as plt
-#import seaborn as sns 
+import numpy as np
+
 
 
 # Carregando dados
@@ -32,11 +31,10 @@ print('train:', train.shape,'\n')
 print('validation:',validation.shape,'\n')
 
 #observando dados 
+ys=train['preco']
 xs=range(3513)
-ys= train['preco']
-plt.bar(xs,ys)
-plt.axis([0,3514,0,max(ys)])
-plt.title("Histograma de Preços")
-plt.xlabel("imóveis")
-plt.ylabel("valor dos imoveis")
+plt.scatter(xs,ys)
 plt.show()
+
+#Removendo outliers
+train = train.drop(train[train.preco > 1e7].index)
