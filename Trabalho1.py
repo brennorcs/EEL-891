@@ -38,3 +38,7 @@ plt.show()
 
 #Removendo outliers
 train = train.drop(train[train.preco > 1e7].index)
+ys=train['preco']
+xs=range(0, len(train['preco']))
+plt.scatter(xs,ys)
+plt.show()
